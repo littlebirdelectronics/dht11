@@ -43,7 +43,6 @@ void dht11_read_val()
   // verify cheksum and print the verified data
   if((j>=40)&&(dht11_val[4]==((dht11_val[0]+dht11_val[1]+dht11_val[2]+dht11_val[3])& 0xFF)))
   {
-    //printf("Humidity = %d.%d %% Temperature = %d.%d *C (%.1f *F)\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3],farenheit);
     printf("%d.%d %%,%d.%dC\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
   }
   else
@@ -52,14 +51,7 @@ void dht11_read_val()
 
 int main(void)
 {
-  printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
   if(wiringPiSetup()==-1)
     exit(1);
-  while(1)
-  {
-     dht11_read_val();
-     delay(3000);
-  }
   dht11_read_val();
-  return 0;
 }
